@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../services/Authentication Service/autheguard.service';
+import { AuthService } from '../services/Authentication Service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -42,8 +42,6 @@ export class LoginComponent {
       } else {
         alert("You don't have an account.Please Sign up First ");
         this.router.navigate(['/signup']);
-
-
       }
     }
   }

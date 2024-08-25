@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '../services/Authentication Service/autheguard.service';
+import { AuthService } from '../services/Authentication Service/auth.service';
 import { BlogService } from '../services/Blog Service/blogservice.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
