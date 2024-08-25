@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../services/autheguard.service';
+import { AuthService } from '../services/Authentication Service/autheguard.service';
 
 @Component({
   selector: 'app-login',

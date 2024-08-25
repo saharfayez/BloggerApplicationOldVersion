@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BlogService } from '../../services/blogservice.service';
+import { BlogService } from '../../services/Blog Service/blogservice.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -35,30 +35,34 @@ export class EditBlogComponent implements OnInit {
       content: ['']
     });
   }
-
   ngOnInit(): void {
-     this.blogId = +this.route.snapshot.paramMap.get('id')!;
-    // console.log('Blog ID:', this.blogId);
-    // this.author = localStorage.getItem('loggedInUser') || 'unknown';
-    // console.log('Author:', this.author);
+    this.blogId = +this.route.snapshot.paramMap.get('id')!;
   
-    const blog = this.blogService.getPostById(this.blogId);
-    console.log('Blog:', blog);
-  
-   
-      this.blogForm.patchValue({
-        title: blog.title,
-        content: blog.content
-      });
-    
+    this.blogService.getPostById(this.blogId).then(blog => {
+      if (blog) {
+        this.blogForm.patchValue({
+          title: blog.title,
+          content: blog.content
+        });
+      } else {
+        console.error('Blog post not found');
+        this.router.navigate(['/']);
+      }
+    }).catch(error => {
+      console.error('Error fetching the blog post', error);
+    });
   }
-
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     const { title, content } = this.blogForm.value;
-
-    if (this.blogService.updatePost(this.blogId, title, content)) {
+    
+    // Make sure to pass the author as well
+    const isUpdated = await this.blogService.updatePost(this.blogId, title, content);
+    
+    if (isUpdated) {
+      // Redirect to the home page if the update is successful
       this.router.navigate(['/']);
     } else {
+      // Handle update failure
       alert('Failed to update the blog post. You may not be authorized to edit this post.');
     }
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '../services/autheguard.service';
-import { BlogService } from '../services/blogservice.service';
+import { AuthService } from '../services/Authentication Service/autheguard.service';
+import { BlogService } from '../services/Blog Service/blogservice.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -37,7 +37,9 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
     this.updateLoginState();
-    this.posts = this.blogService.getAllPosts();
+    this.blogService.getAllPosts().then(posts => {
+      this.posts = posts;
+    });
   }
 
   updateLoginState() {
@@ -77,11 +79,11 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/edit-blog', postId]); // Navigate to the 'Edit Blog' component with post ID
   }
 
-  deletePost(postId: number) {
-    const post = this.blogService.getPostById(postId);
+  async deletePost(postId: number) {
+    const post = await this.blogService.getPostById(postId); // Await the post retrieval
     if (post && this.authService.getCurrentUser() === post.author) {
-      this.blogService.deletePost(postId, post.author);
-      this.posts = this.blogService.getAllPosts(); // Refresh post list
+      await this.blogService.deletePost(postId, post.author); // Await the deletion
+      this.posts = await this.blogService.getAllPosts(); // Refresh post list
     }
   }
 }
