@@ -1,0 +1,42 @@
+.add-blog-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+  }
+  
+  .add-blog-form-card {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-field {
+    width: 100%;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  .form-head{
+    margin-bottom: 10px;
+    color: #1976d2;;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .add-blog-form-card {
+      padding: 15px;
+    }
+  
+    .button-container {
+      justify-content: center;
+    }
+  }
+  

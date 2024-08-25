@@ -1,0 +1,60 @@
+/* Overall layout container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Centered card for login */
+  .login-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Form field container for username and password */
+  .login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add space between fields */
+    margin-bottom: 20px;
+  }
+  
+  /* Form field adjustments */
+  .login-field {
+    width: 100%;
+  }
+  
+  /* Login title styling */
+  .login-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #3f51b5;
+  }
+  
+  /* Button styling */
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Responsive design for small screens */
+  @media (max-width: 600px) {
+    .login-card {
+      padding: 20px;
+    }
+  
+    .login-title {
+      font-size: 20px;
+    }
+  }
+  

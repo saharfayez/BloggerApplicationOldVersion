@@ -1,0 +1,34 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="login-title">Login to Your Account</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="login-fields">
+        <!-- Username Field -->
+        <mat-form-field appearance="outline" class="login-field" color="primary">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Enter your username" />
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password Field -->
+        <mat-form-field appearance="outline" class="login-field" color="primary">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Enter your password" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Login Button -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="login-button">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

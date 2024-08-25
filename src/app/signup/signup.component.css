@@ -1,0 +1,60 @@
+/* Overall layout container */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Centered card for signup */
+  .signup-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Form field container for username and password */
+  .signup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add space between fields */
+    margin-bottom: 20px;
+  }
+  
+  /* Form field adjustments */
+  .signup-field {
+    width: 100%;
+  }
+  
+  /* Signup title styling */
+  .signup-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #3f51b5;
+  }
+  
+  /* Button styling */
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Responsive design for small screens */
+  @media (max-width: 600px) {
+    .signup-card {
+      padding: 20px;
+    }
+  
+    .signup-title {
+      font-size: 20px;
+    }
+  }
+  
